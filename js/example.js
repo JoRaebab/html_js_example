@@ -27,6 +27,7 @@ if (localStudentNo) setStudentNo(localStudentNo);
 const localEmail = localStorage.getItem('email');
 if (localEmail) setEmail(localEmail);
 
+
 nameH1element.onclick = () => {
   inputModalElement.showModal();
   // const inputName = prompt('이름을 입력해 주세요.');
@@ -58,3 +59,12 @@ modalSubmitBtn.onclick = () => {
 inputModalElement.onclick = (event) => {
   if (event.target.nodeName === 'DIALOG') inputModalElement.close();
 };
+
+// eslint-disable-next-line require-jsdoc, no-unused-vars
+function handleInputLength(el, max) {
+  if (el.value.length > max) {
+    el.value = el.value.substr(0, max);
+    alert('10자 이상 입력할 수 없습니다.');
+  }
+}
+
