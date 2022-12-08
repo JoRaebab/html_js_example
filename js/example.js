@@ -45,8 +45,10 @@ modalSubmitBtn.onclick = () => {
   const modalFormElement = document.querySelector('.modalForm');
   const formData = new FormData(modalFormElement);
 
-  if (modalFormElement.studentNo.value.length > 10) {
-    alert('학번은 10자까지 입력해주세요.');
+  if (modalFormElement.studentNo.value.length !== 9) {
+    alert('학번은 9자를 입력해주세요.');
+  } else if (modalFormElement.email.value.match(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i) === null) {
+    alert('이메일을 입력해주세요.');
   } else {
     // 새로고침해도 값 유지
     for (const [key, value] of formData) {
@@ -55,10 +57,8 @@ modalSubmitBtn.onclick = () => {
       if (key==='studentNo') setStudentNo(value);
       if (key==='email') setEmail(value);
     }
+    inputModalElement.close();
   }
-
-
-  inputModalElement.close();
 };
 
 inputModalElement.onclick = (event) => {
