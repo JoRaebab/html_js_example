@@ -45,13 +45,18 @@ modalSubmitBtn.onclick = () => {
   const modalFormElement = document.querySelector('.modalForm');
   const formData = new FormData(modalFormElement);
 
-  // 새로고침해도 값 유지
-  for (const [key, value] of formData) {
-    localStorage.setItem(key, value);
-    if (key==='userName') setUserName(value);
-    if (key==='studentNo') setStudentNo(value);
-    if (key==='email') setEmail(value);
+  if (modalFormElement.studentNo.value.length > 10) {
+    alert('학번은 10자까지 입력해주세요.');
+  } else {
+    // 새로고침해도 값 유지
+    for (const [key, value] of formData) {
+      localStorage.setItem(key, value);
+      if (key==='userName') setUserName(value);
+      if (key==='studentNo') setStudentNo(value);
+      if (key==='email') setEmail(value);
+    }
   }
+
 
   inputModalElement.close();
 };
@@ -60,11 +65,4 @@ inputModalElement.onclick = (event) => {
   if (event.target.nodeName === 'DIALOG') inputModalElement.close();
 };
 
-// eslint-disable-next-line require-jsdoc, no-unused-vars
-function handleInputLength(el, max) {
-  if (el.value.length > max) {
-    el.value = el.value.substr(0, max);
-    alert('10자 이상 입력할 수 없습니다.');
-  }
-}
 
