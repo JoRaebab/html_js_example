@@ -1,3 +1,12 @@
 body {
     background-color: aquamarine;
 }
+
+.inline { 
+    display: inline-block; /*인라인 블록을 하지 않으면 옆에 자리까지 다 차지함*/
+    cursor: pointer;
+}
+
+.red {
+    color: red;
+}
